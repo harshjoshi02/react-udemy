@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeTodo, updateTodo } from '../features/todo/todoSlice'
+import { removeTodo, updateTodo, setEditTodo } from '../features/todo/todoSlice'
 
 function Todos() {
 
@@ -18,6 +18,13 @@ function Todos() {
             key={todo.id}
           >
             <div className='text-white'>{todo.text}</div>
+
+            <button
+            onClick={() => dispatch(setEditTodo(todo))}
+            className="mr-2 text-white bg-blue-500 px-2 rounded">
+                ✏️
+            </button>
+
             <button
              onClick={() => dispatch(removeTodo(todo.id))}
               className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
